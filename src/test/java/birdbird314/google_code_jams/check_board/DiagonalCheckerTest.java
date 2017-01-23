@@ -25,15 +25,16 @@ public class DiagonalCheckerTest {
 
         GameResult result = diagonalChecker.checkDiagonals(gameBoard, 3);
 
-        Assert.assertTrue(result.blueWins() && !result.redWins());
+        Assert.assertTrue(result.blueWins());
+        Assert.assertFalse(result.redWins());
     }
 
     @Test
     public void shouldCheckIfOnlyRedWins() {
         char[][] gameboardArray = {
-                {EMPTY, EMPTY, EMPTY, EMPTY},
-                {EMPTY, BLUE,  RED  , EMPTY},
-                {EMPTY, RED ,  BLUE,  EMPTY},
+                {BLUE,  EMPTY, EMPTY, EMPTY},
+                {BLUE,  RED,   RED  , EMPTY},
+                {RED,   RED ,  BLUE,  EMPTY},
                 {RED,   BLUE,  RED,   BLUE }
         };
 
@@ -41,6 +42,41 @@ public class DiagonalCheckerTest {
 
         GameResult result = diagonalChecker.checkDiagonals(gameBoard, 3);
 
-        Assert.assertTrue(!result.blueWins() && result.redWins());
+        Assert.assertTrue(result.redWins());
+        Assert.assertFalse(result.blueWins());
+    }
+
+    @Test
+    public void shouldCheckIfBothWins() {
+        char[][] gameboardArray = {
+                {BLUE,  EMPTY, EMPTY, EMPTY},
+                {BLUE,  BLUE,  RED  , EMPTY},
+                {RED,   RED ,  BLUE,  EMPTY},
+                {RED,   BLUE,  RED,   BLUE }
+        };
+
+        GameBoard gameBoard = new GameBoard(gameboardArray);
+
+        GameResult result = diagonalChecker.checkDiagonals(gameBoard, 3);
+
+        Assert.assertTrue(result.redWins());
+        Assert.assertTrue(result.blueWins());
+    }
+
+    @Test
+    public void shouldCheckIfNobodyWins() throws Exception {
+        char[][] gameboardArray = {
+                {BLUE,  EMPTY, EMPTY, EMPTY},
+                {BLUE,  RED,   RED  , EMPTY},
+                {RED,   RED ,  BLUE,  EMPTY},
+                {BLUE,  BLUE,  RED,   BLUE }
+        };
+
+        GameBoard gameBoard = new GameBoard(gameboardArray);
+
+        GameResult result = diagonalChecker.checkDiagonals(gameBoard, 3);
+
+        Assert.assertFalse(result.redWins());
+        Assert.assertFalse(result.blueWins());
     }
 }

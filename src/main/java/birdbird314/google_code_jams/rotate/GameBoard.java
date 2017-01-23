@@ -42,4 +42,8 @@ public class GameBoard {
     public int hashCode() {
         return Arrays.deepHashCode(gameBoardArray);
     }
+
+    public char getEntry(int[] index) {
+        return getEntry(index[0], index[1]);
+    }
 }

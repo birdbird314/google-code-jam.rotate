@@ -17,8 +17,8 @@ public class ColumnCheckerTest {
     @Test
     public void shouldCheckIfOnlyBlueWins() {
         char[][] gameboardArray = {
-                {EMPTY, EMPTY, EMPTY, EMPTY},
-                {EMPTY, BLUE,  EMPTY, EMPTY},
+                {EMPTY, EMPTY, RED , EMPTY},
+                {EMPTY, BLUE,  BLUE,  EMPTY},
                 {EMPTY, BLUE,  RED,   EMPTY},
                 {RED,   BLUE,  RED,   RED  }
         };
@@ -31,11 +31,11 @@ public class ColumnCheckerTest {
     }
 
     @Test
-    public void shouldCheckIfOnlyredWins() {
+    public void shouldCheckIfOnlyRedWins() {
         char[][] gameboardArray = {
-                {EMPTY, EMPTY, EMPTY, EMPTY},
-                {EMPTY, EMPTY, RED,   EMPTY},
+                {EMPTY, BLUE,  EMPTY, EMPTY},
                 {EMPTY, BLUE,  RED,   EMPTY},
+                {EMPTY, RED,   RED,   EMPTY},
                 {RED,   BLUE,  RED,   RED  }
         };
 

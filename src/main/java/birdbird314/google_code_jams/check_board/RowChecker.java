@@ -14,29 +14,39 @@ class RowChecker {
         redWins = false;
         this.K = K;
 
-        checkColumns(gameBoard);
+        checkRows(gameBoard);
 
         return new GameResult(blueWins, redWins);
     }
 
-    private void checkColumns(GameBoard gameBoard) {
+    private void checkRows(GameBoard gameBoard) {
         for(int row=0; row<gameBoard.size(); row++) {
-            checkOneColumn(gameBoard, row);
+            checkOneRow(gameBoard, row);
         }
     }
 
-    private void checkOneColumn(GameBoard gameBoard, int row) {
+    private void checkOneRow(GameBoard gameBoard, int row) {
         int redAmount = 0;
         int blueAmount = 0;
+        char lastEntry, currentEntry;
 
-        for (int i = 0; i < gameBoard.size(); i++) {
-            if(gameBoard.getEntry(row, i) == GameBoard.BLUE)
+        lastEntry = gameBoard.getEntry(row, 0);
+        for (int i = 1; i < gameBoard.size(); i++) {
+            currentEntry = gameBoard.getEntry(row, i);
+
+            if (lastEntry != currentEntry) {
+                blueAmount = redAmount = 0;
+            } else if (currentEntry == GameBoard.BLUE) {
                 blueAmount++;
-            else if(gameBoard.getEntry(row, i) == GameBoard.RED)
+                if (blueAmount >= K - 1)
+                    blueWins = true;
+            } else if (currentEntry == GameBoard.RED) {
                 redAmount++;
-        }
+                if (redAmount >= K - 1)
+                    redWins = true;
+            }
 
-        blueWins = blueWins || blueAmount >= K;
-        redWins  = redWins || redAmount >= K;
+            lastEntry = currentEntry;
+        }
     }
 }

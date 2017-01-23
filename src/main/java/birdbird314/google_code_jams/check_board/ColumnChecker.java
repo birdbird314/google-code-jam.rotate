@@ -28,15 +28,26 @@ class ColumnChecker {
     private void checkOneColumn(GameBoard gameBoard, int column) {
         int redAmount = 0;
         int blueAmount = 0;
+        int lastEntry = gameBoard.getEntry(0, column);
 
-        for (int i = 0; i < gameBoard.size(); i++) {
-            if(gameBoard.getEntry(i, column) == GameBoard.BLUE)
+        for (int i = 1; i < gameBoard.size(); i++) {
+            char currentEntry = gameBoard.getEntry(i, column);
+
+            if(lastEntry != currentEntry) {
+                redAmount = blueAmount = 0;
+            }
+            else if(lastEntry == GameBoard.BLUE) {
                 blueAmount++;
-            else if(gameBoard.getEntry(i, column) == GameBoard.RED)
+                if(blueAmount >= K-1) //K-1 because we count entries from 0
+                    blueWins = true;
+            }
+            else if(lastEntry == GameBoard.RED) {
                 redAmount++;
-        }
+                if(redAmount >= K-1)
+                    redWins = true;
+            }
 
-        blueWins = blueWins || blueAmount >= K;
-        redWins  = redWins || redAmount >= K;
+            lastEntry = currentEntry;
+        }
     }
 }
