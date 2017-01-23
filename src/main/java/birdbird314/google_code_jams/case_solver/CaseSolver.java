@@ -14,7 +14,11 @@ public class CaseSolver {
     private Gravity gravity = new Gravity();
     private ResultChecker resultChecker = new ResultChecker();
 
-    GameResult solve(GameBoard gameBoard, int K) {
+    GameResult solve(TestCase testCase) {
+        return solve(testCase.getGameBoard(), testCase.getK());
+    }
+
+    private GameResult solve(GameBoard gameBoard, int K) {
         GameBoard rotatedBoard = rotator.rotate(gameBoard);
         GameBoard roatedAndGravitatedBoard = gravity.gravitate(rotatedBoard);
 

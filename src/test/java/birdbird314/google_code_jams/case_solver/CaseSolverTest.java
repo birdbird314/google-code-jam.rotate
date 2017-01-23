@@ -23,10 +23,10 @@ public class CaseSolverTest {
                 {RED  , BLUE , EMPTY, },
         };
         final int K = 3;
-
         GameBoard gameBoard = new GameBoard(gameboardArray);
+        TestCase testCase = new TestCase(gameBoard, K);
 
-        GameResult result = caseSolver.solve(gameBoard, K);
+        GameResult result = caseSolver.solve(testCase);
 
         Assert.assertTrue(result.blueWins());
         Assert.assertFalse(result.redWins());
@@ -41,10 +41,10 @@ public class CaseSolverTest {
                 {BLUE , RED  , EMPTY, EMPTY}
         };
         final int K = 4;
-
         GameBoard gameBoard = new GameBoard(gameboardArray);
+        TestCase testCase = new TestCase(gameBoard, K);
 
-        GameResult result = caseSolver.solve(gameBoard, K);
+        GameResult result = caseSolver.solve(testCase);
 
         Assert.assertFalse(result.blueWins());
         Assert.assertTrue(result.redWins());
@@ -61,17 +61,17 @@ public class CaseSolverTest {
                 {RED  , BLUE , EMPTY, BLUE , BLUE , BLUE }
         };
         final int K = 4;
-
         GameBoard gameBoard = new GameBoard(gameboardArray);
+        TestCase testCase = new TestCase(gameBoard, K);
 
-        GameResult result = caseSolver.solve(gameBoard, K);
+        GameResult result = caseSolver.solve(testCase);
 
         Assert.assertTrue(result.blueWins());
         Assert.assertTrue(result.redWins());
     }
 
     @Test
-    public void shouldCkeckIfNobodyWins() throws Exception {
+    public void shouldCheckIfNobodyWins() throws Exception {
         char[][] gameboardArray = {
                 {EMPTY, EMPTY, EMPTY, EMPTY, EMPTY, EMPTY, EMPTY},
                 {EMPTY, EMPTY, EMPTY, EMPTY, EMPTY, EMPTY, EMPTY},
@@ -82,10 +82,10 @@ public class CaseSolverTest {
                 {EMPTY, RED  , RED  , BLUE , RED  , EMPTY, EMPTY}
         };
         final int K = 3;
-
         GameBoard gameBoard = new GameBoard(gameboardArray);
+        TestCase testCase = new TestCase(gameBoard, K);
 
-        GameResult result = caseSolver.solve(gameBoard, K);
+        GameResult result = caseSolver.solve(testCase);
 
         Assert.assertFalse(result.blueWins());
         Assert.assertFalse(result.redWins());
