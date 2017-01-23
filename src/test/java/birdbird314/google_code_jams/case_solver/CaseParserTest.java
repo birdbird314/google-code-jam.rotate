@@ -76,5 +76,4 @@ public class CaseParserTest {
 
         Assert.assertEquals(expectedTestCase, actualTestCase);
     }
-
 }

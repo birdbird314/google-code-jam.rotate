@@ -19,4 +19,16 @@ public class GameResult {
     public boolean redWins() {
         return redWins;
     }
+
+    @Override
+    public String toString() {
+        if(blueWins && redWins)
+            return "Both";
+        else if(blueWins && !redWins)
+            return "Blue";
+        else if(!blueWins && redWins)
+            return "Red";
+        else
+            return "Neither";
+    }
 }
