@@ -6,25 +6,22 @@ import birdbird314.google_code_jams.check_board.GameResult;
 import birdbird314.google_code_jams.io.GameResultPrinter;
 import birdbird314.google_code_jams.io.TestCasesIterator;
 
-import java.io.BufferedReader;
-import java.io.FileReader;
-import java.io.IOException;
-import java.io.PrintStream;
+import java.io.*;
 
 /**
  * Created by Kamil on 2017-01-24.
  */
 public class App {
+    private static TestCasesIterator testCasesIterator;
+    private static GameResultPrinter gameResultPrinter;
+    private static CaseSolver caseSolver = new CaseSolver();
+
     public static void main(String[] args) throws IOException {
-        String source = "D:\\A-small-practice.in";
-        String destination = "D:\\solutionsmall.txt";
-        BufferedReader reader = new BufferedReader(new FileReader(source));
-        PrintStream printStream = new PrintStream(destination);
+        if(args.length != 2) {
+            System.out.println("Invalid Arguments\nSyntax:\nRotate [source file] [destination file]");
+        }
 
-        TestCasesIterator testCasesIterator = new TestCasesIterator(reader);
-        GameResultPrinter gameResultPrinter = new GameResultPrinter(printStream);
-
-        CaseSolver caseSolver = new CaseSolver();
+        init(args);
 
         while(testCasesIterator.hasNext()) {
             TestCase currentCase = testCasesIterator.next();
@@ -33,8 +30,15 @@ public class App {
 
             gameResultPrinter.printNextResult(gameResult);
         }
+    }
 
-        reader.close();
-        printStream.close();
+    private static void init(String[] args) throws IOException {
+        String source = args[0];
+        String destination = args[1];
+        BufferedReader reader = new BufferedReader(new FileReader(source));
+        PrintStream printStream = new PrintStream(destination);
+
+        testCasesIterator = new TestCasesIterator(reader);
+        gameResultPrinter = new GameResultPrinter(printStream);
     }
 }
