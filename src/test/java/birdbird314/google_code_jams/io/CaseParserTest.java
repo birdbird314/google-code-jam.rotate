@@ -1,5 +1,7 @@
-package birdbird314.google_code_jams.case_solver;
+package birdbird314.google_code_jams.io;
 
+import birdbird314.google_code_jams.case_solver.TestCase;
+import birdbird314.google_code_jams.io.CaseParser;
 import birdbird314.google_code_jams.rotate.GameBoard;
 import org.junit.Assert;
 import org.junit.Test;

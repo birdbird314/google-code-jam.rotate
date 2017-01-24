@@ -1,6 +1,5 @@
 package birdbird314.google_code_jams.rotate;
 
-import com.sun.javaws.exceptions.InvalidArgumentException;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
@@ -16,7 +15,7 @@ public class GameBoardTest {
     GameBoard gameBoard;
 
     @Before
-    public void setUp() throws InvalidArgumentException {
+    public void setUp() throws IllegalArgumentException {
         char[][] gameboardArray = {
                 {EMPTY, EMPTY, EMPTY, EMPTY, EMPTY},
                 {EMPTY, BLUE,  EMPTY, EMPTY, EMPTY},
@@ -33,8 +32,8 @@ public class GameBoardTest {
         Assert.assertEquals(BLUE, gameBoard.getEntry(2, 1));
     }
 
-    @Test(expected = InvalidArgumentException.class)
-    public void shouldThrowExceptionForInvalidArrayDimension() throws InvalidArgumentException {
+    @Test(expected = IllegalArgumentException.class)
+    public void shouldThrowExceptionForInvalidArrayDimension() throws IllegalArgumentException {
         char[][] invalidArray = {
                 {EMPTY, EMPTY},
                 {RED, RED},
