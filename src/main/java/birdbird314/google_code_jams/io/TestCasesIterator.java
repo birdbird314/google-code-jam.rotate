@@ -17,14 +17,14 @@ public class TestCasesIterator {
 
     private int K, N;
 
-    TestCasesIterator(BufferedReader reader) throws IOException {
+    public TestCasesIterator(BufferedReader reader) throws IOException {
         this.reader = reader;
 
         NUMBER_OF_CASES = Integer.parseInt(reader.readLine());
         currentCase = 0;
     }
 
-    boolean hasNext() {
+    public boolean hasNext() {
         return currentCase<NUMBER_OF_CASES;
     }
 

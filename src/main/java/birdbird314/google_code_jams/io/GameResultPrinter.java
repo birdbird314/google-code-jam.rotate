@@ -11,12 +11,12 @@ public class GameResultPrinter {
     private PrintStream printStream;
     private int currentCaseNum;
 
-    GameResultPrinter(PrintStream printStream) {
+    public GameResultPrinter(PrintStream printStream) {
         this.printStream = printStream;
         currentCaseNum = 0;
     }
 
-    void printNextResult(GameResult gameResult) {
+    public void printNextResult(GameResult gameResult) {
         currentCaseNum++;
         printStream.println("Case #" + currentCaseNum + ": " + gameResult);
     }

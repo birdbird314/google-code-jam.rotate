@@ -14,7 +14,7 @@ public class CaseSolver {
     private Gravity gravity = new Gravity();
     private ResultChecker resultChecker = new ResultChecker();
 
-    GameResult solve(TestCase testCase) {
+    public GameResult solve(TestCase testCase) {
         return solve(testCase.getGameBoard(), testCase.getK());
     }
 
